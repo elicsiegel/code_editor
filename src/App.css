@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  justify-content: center;
+}
+
+textarea {
+  height: 90vh;
+  width: 40%;
+  resize: none;
+}
