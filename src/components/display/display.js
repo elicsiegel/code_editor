@@ -5,17 +5,47 @@ class Display extends Component {
   
   constructor() {
     super();
-    this.state = {
-      
-    }
-    
+    this.keywords = ["var", "function", "class"];
   }
   
+  componentDidMount() {
+    this.highlightKeywords();
+  }
+  
+  componentDidUpdate() {
+    this.highlightKeywords();
+  }
+  
+  wrappedInQuotes(word) {
+    if (word.length === 1) return false;
+    return word[0] === "'" && word[word.length - 1] === "'" || word[0] === '"' && word[word.length - 1] === '"' 
+  }
+  
+  isKeyword(word) {
+    return this.keywords.includes(word) || this.wrappedInQuotes(word)    
+  }
+  
+  highlightKeywords() {
+    let text = this.props.text.split(" ")
+    let newString = "";
+    
+    for (var i = 0; i < text.length; i++) {
+      if (this.isKeyword(text[i])) {
+        
+        newString += '<mark>' + text[i] + '</mark> ';
+      } else {
+        newString += text[i] + " ";
+      }
+    }
+    // debugger
+    document.getElementsByClassName("display-div")[0].innerHTML = newString;
+    // debugger
+    return newString
+  }
 
   render() {
     return (
       <div className="display-div">
-        {this.props.text}
       </div>
     );
   }

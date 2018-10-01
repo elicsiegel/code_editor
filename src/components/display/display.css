@@ -1,5 +1,10 @@
 .display-div {
   height: 90vh;
   width: 40%;
-  background-color: blue;
+  border: 1px solid black
+}
+
+mark {
+  color: black;
+  background-color: #d4e9ab;
 }
