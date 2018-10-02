@@ -1,17 +1,24 @@
 .App {
   display: flex;
-  justify-content: center;
-  margin-top: 10px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.App > * {
+.editor-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.editor-wrapper > * {
   margin-left: 5px;
   margin-right: 5px;
 }
 
 textarea {
   border: 1px solid black;
-  height: 90vh;
+  height: 50vh;
   padding: 0px;
   resize: none;
   width: 40%;

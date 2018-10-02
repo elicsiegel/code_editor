@@ -5,7 +5,7 @@ class Display extends Component {
   
   constructor() {
     super();
-    this.keywords = ["var", "function", "class"];
+    
   }
   
   componentDidMount() {
@@ -18,11 +18,11 @@ class Display extends Component {
   
   wrappedInQuotes(word) {
     if (word.length === 1) return false;
-    return word[0] === "'" && word[word.length - 1] === "'" || word[0] === '"' && word[word.length - 1] === '"' 
+    return word[0] === "'" && word[word.length - 1] === "'" || word[0] === '"' && word[word.length - 1] === '"'; 
   }
   
   isKeyword(word) {
-    return this.keywords.includes(word) || this.wrappedInQuotes(word)    
+    return this.props.keywords.includes(word) || this.wrappedInQuotes(word);
   }
   
   highlightKeywords() {
@@ -37,16 +37,15 @@ class Display extends Component {
         newString += text[i] + " ";
       }
     }
-    // debugger
+
     document.getElementsByClassName("display-div")[0].innerHTML = newString;
-    // debugger
-    return newString
+  
+    return newString;
   }
 
   render() {
     return (
-      <div className="display-div">
-      </div>
+      <div className="display-div"></div>
     );
   }
 }

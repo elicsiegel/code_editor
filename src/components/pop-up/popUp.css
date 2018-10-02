@@ -1,0 +1,8 @@
+ul {
+  padding: 0px;
+}
+.pop-up li {
+  cursor: pointer;
+  text-align: center;
+  list-style-type: none;
+}
