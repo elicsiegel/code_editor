@@ -3,10 +3,6 @@ import './popUp.css';
 
 class PopUp extends Component {
 
-  constructor() {
-    super();
-  }
-
   render() {
     const matches = this.props.keywords.map((keyword) => {
       if (this.props.currentWord !== "" && keyword.includes(this.props.currentWord) && keyword.length > this.props.currentWord.length) {
@@ -27,20 +23,20 @@ class PopUp extends Component {
     });
 
     let matchingKeys;
-    const addObject = this.props.addObject;
-    const splitWord = currentWord.split(".")
+    const splitWord = currentWord.split(".");
 
     if (currentWord.includes(".")) {
       let potentialObject = "this.props.objects.";
-      let currentTerm = splitWord[splitWord.length - 1]
+      let currentTerm = splitWord[splitWord.length - 1];
       let joinedWord;
-      joinedWord = splitWord.slice(0, splitWord.length - 1).join(".")
-      potentialObject += joinedWord
+      joinedWord = splitWord.slice(0, splitWord.length - 1).join(".");
+      potentialObject += joinedWord;
 
       try {
-        if (typeof eval(potentialObject) === "object") {
+        potentialObject = eval(potentialObject)
+        if (typeof potentialObject === "object") {
 
-         matchingKeys = Object.keys(eval(potentialObject)).map((key) => {
+         matchingKeys = Object.keys(potentialObject).map((key) => {
            const suggestion = "." + key;
            if (currentTerm.length > 0) {
              if (key.startsWith(currentTerm) && currentTerm.length < key.length) {

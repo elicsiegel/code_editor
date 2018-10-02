@@ -3,11 +3,6 @@ import './display.css';
 
 class Display extends Component {
 
-  constructor() {
-    super();
-
-  }
-
   componentDidMount() {
     this.highlightKeywords();
   }
@@ -30,7 +25,7 @@ class Display extends Component {
     let newString = "";
 
     for (var i = 0; i < text.length; i++) {
-      if (this.isKeyword(text[i])) {  
+      if (this.isKeyword(text[i])) {
         newString += '<mark>' + text[i] + '</mark> ';
       } else {
         newString += text[i] + " ";

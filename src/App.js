@@ -24,13 +24,12 @@ class App extends Component {
     this.keywords = ["var", "function", "class"];
     this.updateText = this.updateText.bind(this);
     this.addSuggestion = this.addSuggestion.bind(this);
-    this.addObject = this.addObject.bind(this);
   }
 
   addSuggestion(suggestion) {
     const firstPart = this.state.text.slice(0, this.state.currentWordIdxs[0]);
     const secondPart = this.state.text.slice(this.state.currentWordIdxs[1], -1);
-    const finalText = firstPart + suggestion + secondPart
+    const finalText = firstPart + suggestion + secondPart;
 
     document.getElementsByTagName("textarea")[0].value = finalText;
 
@@ -40,17 +39,10 @@ class App extends Component {
     })
   }
 
-  addObject(obj) {
-    const newObjects = Object.assign(this.state.objects, obj);
-    this.setState({
-      objects: newObjects
-    })
-  }
-
   updateText(e) {
     let textareaText = e.target.value;
-    let currentWord = ""
-    let idx = e.target.selectionStart - 1
+    let currentWord = "";
+    let idx = e.target.selectionStart - 1;
 
     while (textareaText[idx] && textareaText[idx] !== " ") {
       currentWord = textareaText[idx] + currentWord
@@ -64,7 +56,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <h1>Welcome to Eli's Code Editor</h1>
@@ -77,7 +68,6 @@ class App extends Component {
             keywords={this.keywords} />
         </div>
         <PopUp
-          addObject={this.addObject}
           objects={this.state.objects}
           addSuggestion={this.addSuggestion}
           currentWord={this.state.currentWord}
