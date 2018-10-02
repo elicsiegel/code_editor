@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 import './popUp.css';
 
+function getValue(s, o) {
+    var keys = s.split(".")
+
+    for (let i = 0, length = keys.length; i < length; i++) {
+        let key = keys[i];
+
+        if (!(key in o) || o[key] === null || o[key] === undefined) {
+            throw new Error("Could not get value of " + s);
+        }
+
+        o = o[key];
+    }
+
+    return o;
+}
+
 class PopUp extends Component {
 
   render() {
@@ -33,7 +49,7 @@ class PopUp extends Component {
       potentialObject += joinedWord;
 
       try {
-        potentialObject = eval(potentialObject)
+        potentialObject = getValue(joinedWord, this.props.objects)
         if (typeof potentialObject === "object") {
 
          matchingKeys = Object.keys(potentialObject).map((key) => {
