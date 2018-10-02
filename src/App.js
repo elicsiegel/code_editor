@@ -17,11 +17,6 @@ class App extends Component {
           foo2: {
             foo3: 'some value'
           }
-        },
-        obj2: {
-          hey: {
-            hi: "j"
-          }
         }
       }
     }
