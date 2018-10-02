@@ -42,16 +42,14 @@ class PopUp extends Component {
     const splitWord = currentWord.split(".");
 
     if (currentWord.includes(".")) {
-      let potentialObject = "this.props.objects.";
+      let potentialObject;
       let currentTerm = splitWord[splitWord.length - 1];
-      let joinedWord;
-      joinedWord = splitWord.slice(0, splitWord.length - 1).join(".");
-      potentialObject += joinedWord;
+      let joinedWord = splitWord.slice(0, splitWord.length - 1).join(".");
 
       try {
-        potentialObject = getValue(joinedWord, this.props.objects)
+        potentialObject = getValue(joinedWord, this.props.objects);
+        
         if (typeof potentialObject === "object") {
-
          matchingKeys = Object.keys(potentialObject).map((key) => {
            const suggestion = "." + key;
            if (currentTerm.length > 0) {
