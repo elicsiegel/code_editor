@@ -37,21 +37,26 @@ class PopUp extends Component {
       joinedWord = splitWord.slice(0, splitWord.length - 1).join(".")
       potentialObject += joinedWord
 
-      if (typeof eval(potentialObject) === "object") {
+      try {
+        if (typeof eval(potentialObject) === "object") {
 
-       matchingKeys = Object.keys(eval(potentialObject)).map((key) => {
-         const suggestion = "." + key;
-         if (currentTerm.length > 0) {
-           if (key.startsWith(currentTerm) && currentTerm.length < key.length) {
+         matchingKeys = Object.keys(eval(potentialObject)).map((key) => {
+           const suggestion = "." + key;
+           if (currentTerm.length > 0) {
+             if (key.startsWith(currentTerm) && currentTerm.length < key.length) {
+               return <li onClick={() => addSuggestion(joinedWord + suggestion)}
+                 key={key}>{suggestion}</li>
+             }
+           } else {
              return <li onClick={() => addSuggestion(joinedWord + suggestion)}
                key={key}>{suggestion}</li>
            }
-         } else {
-           return <li onClick={() => addSuggestion(joinedWord + suggestion)}
-             key={key}>{suggestion}</li>
-         }
-       });
-     }
+         });
+       }
+     } catch(err) {
+        console.log("Invalid object name")
+      }
+
 
     }
 

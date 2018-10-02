@@ -69,7 +69,9 @@ class App extends Component {
       <div className="App">
         <h1>Welcome to Eli's Code Editor</h1>
         <div className="editor-wrapper">
-          <textarea onChange={this.updateText} />
+          <textarea
+            placeholder="Type code here..."
+            onChange={this.updateText} />
           <Display
             text={this.state.text}
             keywords={this.keywords} />
