@@ -30,19 +30,29 @@ class PopUp extends Component {
     const addObject = this.props.addObject;
     const splitWord = currentWord.split(".")
 
-    if (currentWord[currentWord.length - 1] === ".") {
+    if (currentWord.includes(".")) {
+      let potentialObject = "this.props.objects.";
+      let currentTerm = splitWord[splitWord.length - 1]
+      let joinedWord;
+      joinedWord = splitWord.slice(0, splitWord.length - 1).join(".")
+      potentialObject += joinedWord
 
-      const toExecute = "this.props.objects." + currentWord.slice(0, currentWord.length - 1)
+      if (typeof eval(potentialObject) === "object") {
 
-      if (typeof eval(toExecute) === "object") {
-        matchingKeys = Object.keys(eval(toExecute)).map((key) => {
-        const suggestion = "." + key;
+       matchingKeys = Object.keys(eval(potentialObject)).map((key) => {
+         const suggestion = "." + key;
+         if (currentTerm.length > 0) {
+           if (key.startsWith(currentTerm) && currentTerm.length < key.length) {
+             return <li onClick={() => addSuggestion(joinedWord + suggestion)}
+               key={key}>{suggestion}</li>
+           }
+         } else {
+           return <li onClick={() => addSuggestion(joinedWord + suggestion)}
+             key={key}>{suggestion}</li>
+         }
+       });
+     }
 
-        return <li
-                  onClick={() => addSuggestion(currentWord + key)}
-                      key={key}>{suggestion}</li>
-        });
-      }
     }
 
     return (
