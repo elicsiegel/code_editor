@@ -14,7 +14,7 @@ var obj = {
 }
 ```
 
-If the user types `obj.` both `.foo1` and `.foo2` will appear in the pop up. If the user types `obj.foo2.` then `.foo3` will appear in the pop up suggestions. This functionality is built into the pop up Component. 
+If the user types `obj.` both `.foo1` and `.foo2` will appear in the pop up. If the user types `obj.foo2.` then `.foo3` will appear in the pop up suggestions. If the user clicks on one of these options from the pop up window, that will add that word to where the user is typing. This functionality is built into the pop up Component. 
 
 ## Information below is about Create React App on which this project is built
 
