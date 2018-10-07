@@ -1,4 +1,6 @@
 # Code Editor
+[Live](http://www.elicsiegel.com/code_editor)
+
 This project is a simple code editor meant to run in the browser. When a user starts typing in the text area on the left side of the page three things will happen.
 
 1. Any keywords (ie. `function`, `class`, `var`) that the user types will be rendered in the div on the right side with a special background to indicate that they are special keywords. This functionality is built into the display Component.
