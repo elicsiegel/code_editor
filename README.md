@@ -1,7 +1,7 @@
 # Code Editor
 This project is a simple code editor meant to run in the browser. When a user starts typing in the text area on the left side of the page three things will happen.
 
-1. Any keywords (ie. function, class, var) that the user types will be rendered in the div on the right side with a special background to indicate that they are special keywords. This functionality is built into the display Component.
+1. Any keywords (ie. `function`, `class`, `var`) that the user types will be rendered in the div on the right side with a special background to indicate that they are special keywords. This functionality is built into the display Component.
 2. If a user starts to type an object that the editor has stored in memory, a pop up window below will display all objects that match what the current word the user is typing is. If the user clicks on one of these options from the pop up window, that will add that word to where the user is typing. This functionality is built into the pop up Component.
 3. If a user types a . the editor will search for all objects and their corresponding keys in memory that match the current word. For example, if we have an object such as:
 
@@ -14,7 +14,7 @@ var obj = {
 }
 ```
 
-If the user types `obj.` both `.foo1` and `.foo2` will appear in the pop up. If the user types `obj.foo2.` then `foo3` will appear in the pop up suggestions. This functionality is built into the pop up Component. 
+If the user types `obj.` both `.foo1` and `.foo2` will appear in the pop up. If the user types `obj.foo2.` then `.foo3` will appear in the pop up suggestions. This functionality is built into the pop up Component. 
 
 ## Information below is about Create React App on which this project is built
 
